@@ -8,7 +8,9 @@ const PrivateRoutes = ({ children }) => {
     const { user, loading } = useContext(AuthContext);
 
     if (loading) {
-        return <progress className="progress w-56 text-center"></progress>
+        return <div class="flex justify-center items-center space-x-2 my-20">
+            <progress className="progress w-56"></progress>
+        </div>
     }
 
     if (user) {

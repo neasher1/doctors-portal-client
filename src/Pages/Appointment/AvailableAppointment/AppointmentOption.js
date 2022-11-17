@@ -24,7 +24,8 @@ const AppointmentOption = ({ appointmentOption, setTreatment }) => {
                             >Book Appointment</label>
                         </div>
                         :
-                        <div className='card-actions justify-center'>                               <Link to='/login' className='btn btn-primary text-white'>Login to Book Appointment</Link>
+                        <div className='card-actions justify-center'>
+                            <Link to='/login' className='btn btn-primary text-white'>Login to Book Appointment</Link>
                         </div>
                 }
 

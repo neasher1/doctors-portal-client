@@ -16,19 +16,36 @@ const SignUp = () => {
             .then(result => {
                 const user = result.user;
                 toast.success("Successfully Created a User");
-                console.log(user);
+                // console.log(user);
                 event.target.reset();
                 const userInfo = {
                     displayName: data.name,
                 }
                 updateUser(userInfo)
                     .then(() => {
-                        navigate('/');
+                        savedUserToDB(data.name, data.email);
                     })
                     .catch(error => console.log(error))
             })
             .catch(error => {
                 toast.error(error.message);
+            })
+    }
+
+    const savedUserToDB = (name, email) => {
+        const user = { name, email };
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.acknowledged) {
+                    navigate('/');
+                }
             })
     }
 
