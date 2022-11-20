@@ -1,5 +1,4 @@
 import { useQuery } from '@tanstack/react-query';
-import id from 'date-fns/esm/locale/id/index.js';
 import React from 'react';
 import toast from 'react-hot-toast';
 
@@ -31,7 +30,7 @@ const AllUsers = () => {
     }
 
     return (
-        <div>
+        <div className='card shadow-2xl p-8 m-4'>
             <h3 className="text-2xl mb-4">All Users</h3>
             <div className="overflow-x-auto">
                 <table className="table w-full">

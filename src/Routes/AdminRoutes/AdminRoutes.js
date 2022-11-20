@@ -10,7 +10,7 @@ const AdminRoutes = ({ children }) => {
     const location = useLocation();
 
     if (loading || adminLoading) {
-        return <div class="flex justify-center items-center space-x-2 my-20">
+        return <div className="flex justify-center items-center space-x-2 my-20">
             <progress className="progress w-56"></progress>
         </div>
     }

@@ -27,7 +27,7 @@ const MyAppointment = () => {
     }
 
     return (
-        <div>
+        <div className='card shadow-2xl p-8 m-4'>
             <h3 className="text-2xl mb-4">My Appointment</h3>
             <div className="overflow-x-auto">
                 <table className="table w-full">
@@ -43,7 +43,8 @@ const MyAppointment = () => {
                     </thead>
                     <tbody>
                         {
-                            bookings.map((booking, idx) => <tr key={idx}>
+                            bookings &&
+                            bookings?.map((booking, idx) => <tr key={idx}>
                                 <th>{idx + 1}</th>
                                 <td>{booking?.patient}</td>
                                 <td>{booking?.treatment}</td>
