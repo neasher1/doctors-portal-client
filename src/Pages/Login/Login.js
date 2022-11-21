@@ -28,7 +28,7 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 toast.success("Successfully logged in")
-                console.log(user);
+                // console.log(user);
                 event.target.reset();
                 setLoginUserEmail(data.email);
             })

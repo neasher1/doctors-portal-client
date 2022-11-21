@@ -6,7 +6,7 @@ import toast from 'react-hot-toast';
 const BookingModal = ({ treatment, setTreatment, selectedDate, refetch }) => {
 
     const { user } = useContext(AuthContext);
-    const { name, slots } = treatment;
+    const { name, slots, price } = treatment;
     const date = format(selectedDate, 'PP');
 
     const handleBooking = event => {
@@ -24,6 +24,7 @@ const BookingModal = ({ treatment, setTreatment, selectedDate, refetch }) => {
             slot,
             email,
             phn,
+            price,
         }
         // TODO: send data to the server
         // and once it is saved then close the modal and display success toast

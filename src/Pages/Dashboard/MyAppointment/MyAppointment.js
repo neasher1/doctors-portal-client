@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider';
 import Loading from '../../Shared/Loading/Loading';
 
@@ -39,18 +40,38 @@ const MyAppointment = () => {
                             <th>Time</th>
                             <th>Phone</th>
                             <th>Date</th>
+                            <th>Payment</th>
+                            <th>TransactionId</th>
                         </tr>
                     </thead>
                     <tbody>
                         {
                             bookings &&
-                            bookings?.map((booking, idx) => <tr key={idx}>
+                            bookings?.map((booking, idx) => <tr key={booking._id}>
                                 <th>{idx + 1}</th>
                                 <td>{booking?.patient}</td>
                                 <td>{booking?.treatment}</td>
                                 <td>{booking?.slot}</td>
                                 <td>{booking?.phn}</td>
                                 <td>{booking?.appointmentDate}</td>
+                                <td>
+                                    {
+                                        booking?.price && !booking?.paid &&
+                                        <Link to={`/dashboard/payment/${booking._id}`}>
+                                            <button className='btn btn-primary text-white btn-sm'>Pay</button>
+                                        </Link>
+                                    }
+                                    {
+                                        booking?.price && booking?.paid &&
+                                        <button className='btn btn-accent btn-sm'>Paid</button>
+                                    }
+                                </td>
+                                <td>
+                                    {
+                                        booking?.paid &&
+                                        <button className=''>{booking.transactionId}</button>
+                                    }
+                                </td>
                             </tr>
                             )
                         }

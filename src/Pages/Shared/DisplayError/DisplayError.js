@@ -1,0 +1,35 @@
+import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
+import { Link, useNavigate, useRouteError } from 'react-router-dom';
+import { AuthContext } from '../../../contexts/AuthProvider';
+
+const DisplayError = () => {
+    const { logOut } = useContext(AuthContext);
+    const navigate = useNavigate();
+
+    const error = useRouteError();
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => {
+                toast.success("Sign Out Successfully");
+                navigate('/login');
+            })
+            .catch(error => {
+                toast.error(error.message);
+            })
+    }
+
+    return (
+        <div className='mx-auto m-16'>
+            <h1 className='text-4xl text-error'>Oops!</h1>
+            <p className='text-2xl'>Sorry, an unexpected error has occurred.</p>
+            <p>
+                <i>{error.statusText || error.message}</i>
+            </p>
+            <p className='text-center text-2xl'>Please <Link onClick={handleLogOut} className='btn btn-primary'>Sign Out</Link> and logged back again</p>
+        </div>
+    );
+};
+
+export default DisplayError;
